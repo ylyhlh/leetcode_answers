@@ -12,7 +12,7 @@ class Solution(object):
         :type str: str
         :rtype: int
         """
-        regex = re.match(' *([-+]?\d+)', str)
+        regex = re.match(r" *([-+]?\d+)", str)
         if regex:
             regex_int = int(regex.group(1))
             if regex_int > INT_MAX:
