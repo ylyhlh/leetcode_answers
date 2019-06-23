@@ -9,7 +9,7 @@ class ListNode(object):
 
 
 # solution 0: not super clean, need to make dummy node to make this clean
-class Solution(object):
+class Solution_2(object):
     def removeNthFromEnd(self, head, n):
         """
         :type head: ListNode
@@ -36,4 +36,32 @@ class Solution(object):
         else:
             return None
         return head
+
+# much cleaner with dummy node
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        dummy = ListNode(0)
+        dummy.next = head
+        # if not head.next:
+        #     return None
+        # if not head:
+        #     return head
+        # init 3 pointer
+        l = dummy
+        e = dummy
+        for _ in range(n+1):
+            e = e.next
+
+        while e:
+            l = l.next
+            e = e.next
+
+        l.next = l.next.next
+
+        return dummy.next
                 
